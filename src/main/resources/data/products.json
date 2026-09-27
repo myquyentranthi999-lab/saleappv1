@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "Áo len handmade",
+    "price": 250000,
+    "image": "images/ao-len.jpg",
+    "description": "Áo len thủ công mềm mại, ấm áp cho mùa đông.",
+    "categoryId": 1
+  },
+  {
+    "id": 2,
+    "name": "Bộ kit móc len DIY",
+    "price": 120000,
+    "image": "images/kit-moc.jpg",
+    "description": "Bộ nguyên liệu tự làm thú bông len kèm hướng dẫn chi tiết.",
+    "categoryId": 1
+  },
+  {
+    "id": 3,
+    "name": "Móc khóa len quả dâu",
+    "price": 45000,
+    "image": "images/moc-khoa.jpg",
+    "description": "Móc khóa hình quả dâu tây dễ thương làm từ len milk cotton.",
+    "categoryId": 2
+  }
+]

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Sale App - Danh Sách Sản Phẩm</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; background-color: #f9f9f9; }
+        h1 { color: #333; text-align: center; }
+        .filter-form { text-align: center; margin-bottom: 20px; }
+        .filter-form input, .filter-form button { padding: 8px; margin: 5px; border-radius: 4px; border: 1px solid #ccc; }
+        .product-container { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
+        .product-card { background: #fff; border: 1px solid #ddd; border-radius: 8px; width: 250px; padding: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .product-card h3 { margin-top: 0; color: #007bff; }
+        .price { color: #e74c3c; font-weight: bold; font-size: 1.1em; }
+    </style>
+</head>
+<body>
+
+    <h1>Danh Sách Sản Phẩm Handmade</h1>
+
+    <div class="filter-form">
+        <form action="/products" method="get">
+            <input type="text" name="keyword" placeholder="Tên sản phẩm..." th:value="${param.keyword}">
+            <input type="number" name="categoryId" placeholder="ID Danh mục..." th:value="${param.categoryId}">
+            <input type="number" name="fromPrice" placeholder="Giá từ..." th:value="${param.fromPrice}">
+            <input type="number" name="toPrice" placeholder="Giá đến..." th:value="${param.toPrice}">
+            <button type="submit">Tìm kiếm</button>
+            <a href="/products">Xóa bộ lọc</a>
+        </form>
+    </div>
+
+    <div class="product-container">
+        <!-- Vòng lặp Thymeleaf duyệt qua danh sách sản phẩm từ file JSON -->
+        <div class="product-card" th:each="p : ${products}">
+            <img th:src="@{/{imagePath}(imagePath=${p.image})}" alt="Hình ảnh sản phẩm" style="width: 100%; height: 200px; object-fit: cover; border-radius: 5px; margin-bottom: 10px;">
+            <h3 th:text="${p.name}">Tên sản phẩm</h3>
+            <p th:text="${p.description}">Mô tả sản phẩm</p>
+            <p class="price" th:text="${#numbers.formatInteger(p.price, 0, 'COMMA')} + ' VNĐ'">Giá</p>
+        </div>
+    </div>
+
+</body>
+</html>
